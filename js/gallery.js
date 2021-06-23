@@ -53,8 +53,7 @@ function onOpenModal() {
 
 function onCloseModal() {
   refs.modalLightbox.classList.remove('is-open');
-  refs.modalImage.src = '';
-  refs.modalImage.alt = '';
+  setImageAttribute('', '')
 
   refs.btnModalClose.removeEventListener('click', onCloseModal);
   refs.modalOverlay.removeEventListener('click', onCloseModal);
@@ -67,6 +66,10 @@ function onTargetEscapeClick(event) {
 }
 
 function appearedImage(element) {
-  refs.modalImage.src = element.dataset.source;
-  refs.modalImage.alt = element.alt;
+  setImageAttribute(element.dataset.source, element.alt)
+}
+
+function setImageAttribute(src, alt) {
+  refs.modalImage.src = src,
+  refs.modalImage.alt = alt
 }
